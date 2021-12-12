@@ -77,7 +77,13 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         if($request->isMethod('post')){
+            $request->validate([
+                'username' => 'required|string|min:4|max:12',
+                'mail' => 'required|string|email|min:4|max:12|unique:users',
+                'password' => 'required|string|min:4|max:12|confirmed|unique:users'
+            ]);
             $data = $request->input();
+
 
             $this->create($data);
             return redirect('added');
