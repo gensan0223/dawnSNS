@@ -6,6 +6,15 @@
 
 <h2>新規ユーザー登録</h2>
 
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 {{ Form::label('username','ユーザー名',['class'=>'label']) }}
 {{ Form::text('username',null,['class' => 'input']) }}
 
@@ -16,7 +25,7 @@
 {{ Form::text('password',null,['class' => 'input']) }}
 
 {{ Form::label('password-confirm','パスワード確認',['class'=>'label']) }}
-{{ Form::text('password-confirm',null,['class' => 'input']) }}
+{{ Form::text('password_confirmation',null,['class' => 'input']) }}
 
 {{ Form::submit('登録') }}
 

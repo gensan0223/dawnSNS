@@ -3,23 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
     //
-    public function logout(Request $request){
-        Auth::logout();
-        redirect('auth.login');
-    }
 
     public function profile(){
-        return view('users.profile');
+        $user = Auth::user();
+        return view('users.profile',['user'=>$user]);
     }
     public function search(){
-        return view('users.search');
+        $user = Auth::user();
+        return view('users.search',['user'=>$user]);
     }
 }

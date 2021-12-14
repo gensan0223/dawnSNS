@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -77,7 +78,13 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         if($request->isMethod('post')){
+            $request->validate([
+                'username' => 'required|string|min:4|max:12',
+                'mail' => 'required|string|email|min:4|max:12|unique:users',
+                'password' => 'required|string|min:4|max:12|confirmed|unique:users'
+            ]);
             $data = $request->input();
+
 
             $this->create($data);
             return redirect('added');
@@ -86,6 +93,7 @@ class RegisterController extends Controller
     }
 
     public function added(){
-        return view('auth.added');
+        $user = DB::table('users')->OrderBy('id')->first();
+        return view('auth.added', ['user'=>$user]);
     }
 }
