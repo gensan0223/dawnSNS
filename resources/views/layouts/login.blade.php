@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/reset.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -23,15 +23,25 @@
     <header>
         <div id = "head">
         <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>{{ $user->username }}さん<img src="images/dawn.png"></p>
+            <div id="menu">
+                <div id="menu_bar">
+                    <p><label for="menu_bar">{{ $user->username }}さん<img src="images/dawn.png"></label></p>
                 <div>
-                <ul>
+                <ul id="links">
                     <li><a href="/top">ホーム</a></li>
                     <li><a href="/profile">プロフィール</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
+            </div>
+            <input id="acd-check1" class="acd-check" type="checkbox">
+            <label class="acd-label" for="acd-check1">クリックで開く1</label>
+            <div class="acd-content">
+                <p>hello.world!</p>
+            </div>
+            <input id="acd-check2" class="acd-check" type="checkbox">
+            <label class="acd-label" for="acd-check2">クリックで開く2</label>
+            <div class="acd-content">
+                <p>hello.world2!</p>
             </div>
         </div>
     </header>
