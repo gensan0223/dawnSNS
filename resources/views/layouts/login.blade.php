@@ -25,24 +25,14 @@
         <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
             <div id="menu">
                 <div id="menu_bar">
-                    <p><label for="menu_bar">{{ $user->username }}さん<img src="images/dawn.png"></label></p>
-                <div>
-                <ul id="links">
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
-            </div>
-            <input id="acd-check1" class="acd-check" type="checkbox">
-            <label class="acd-label" for="acd-check1">クリックで開く1</label>
-            <div class="acd-content">
-                <p>hello.world!</p>
-            </div>
-            <input id="acd-check2" class="acd-check" type="checkbox">
-            <label class="acd-label" for="acd-check2">クリックで開く2</label>
-            <div class="acd-content">
-                <p>hello.world2!</p>
-            </div>
+                    <input id="acd-check1" class="acd-check" type="checkbox">
+                    <label class="acd-label" for="acd-check1">{{ $user->username }}さん<img src="images/dawn.png"></label>
+                    <div class="acd-content">
+                        <p><a href="{{ route('posts.top') }}">ホーム</a></p>
+                        <p><a href="{{ route('users.profile') }}">プロフィール</a></p>
+                        <p><a href="{{ route('auth.logout') }}">ログアウト</a></p>
+                    </div>
+                </div>
         </div>
     </header>
     <div id="row">

@@ -9,6 +9,13 @@ header{
 }
 
 /* main content */
+.menu_bar{
+  /* display: block; */
+  margin-left: auto;
+  /* text-align: right; */
+  /* float: right; */
+}
+
 #row{
     display: flex;
     flex-flow: row wrap;
@@ -21,6 +28,7 @@ header{
     border-left: 1px solid #6C6C6C;
 }
 .acd-check{
+  visibility: hidden;
 }
 .acd-label{
   background: #333;
@@ -31,6 +39,7 @@ header{
 }
 .acd-content{
   border: 1px solid #333;
+  color: antiquewhite;
   height: 0;
   opacity: 0;
   padding: 0 10px;
