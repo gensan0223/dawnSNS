@@ -17,7 +17,17 @@ class UsersTableSeeder extends Seeder
                 'username'=>'Seeder1',
                 'mail'=>'seeder1@mail.com',
                 'password'=>bcrypt('password')
-            ]
+            ],
+            [
+                'username'=>'Seeder2',
+                'mail'=>'seeder2@mail.com',
+                'password'=>bcrypt('password')
+            ],
+            [
+                'username'=>'Seeder3',
+                'mail'=>'seeder3@mail.com',
+                'password'=>bcrypt('password')
+            ],
             ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -29,4 +30,8 @@ class User extends Authenticatable
     ];
 
     protected $rememberTokenName = false;
+
+    public function follows(){
+        return $this->belongsToMany('App\Follow', 'follows', ['follow_id', 'follower_id'], 'id');
+    }
 }

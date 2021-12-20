@@ -22,7 +22,7 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
+            <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
             <div id="menu">
                 <div id="menu_bar">
                     <input id="acd-check1" class="acd-check" type="checkbox">
@@ -33,6 +33,7 @@
                         <p><a href="{{ route('auth.logout') }}">ログアウト</a></p>
                     </div>
                 </div>
+            </div>
         </div>
     </header>
     <div id="row">
