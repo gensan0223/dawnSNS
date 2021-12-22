@@ -26,11 +26,13 @@ class CreateFollowsTable extends Migration
             $table->foreign('follower_id')
             ->references('id')
             ->on('users');
+
+            $table->unique(['follow_id', 'follower_id']);
         });
     }
 
     /**
-     * Reverse the migrations.
+    $numListA = explode(' ', trim(fgets(STDIN))); * Reverse the migrations.
      *
      * @return void
      */

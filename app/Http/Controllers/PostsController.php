@@ -12,8 +12,13 @@ class PostsController extends Controller
     //
     public function index(){
         $user = Auth::user();
-        $follow = User::find(1);
-        dd($follow);
-        return view('posts.index',['user'=>$user]);
+        //ログインユーザのフォローしている人数
+        $follow = $user->followUsers;
+        $followCount = $follow->count();
+        //ログインユーザのフォローされている人数
+        $follower = $user->followerUsers;
+        $followerCount = $follower->count();
+
+        return view('posts.index',compact('user', 'followCount', 'followerCount'));
     }
 }
