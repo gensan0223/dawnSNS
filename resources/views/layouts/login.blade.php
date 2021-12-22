@@ -45,12 +45,12 @@
                 <p>{{ $user->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>{{ $followCount }}名</p>
                 </div>
                 <p class="btn"><a href="">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>{{ $followerCount }}名</p>
                 </div>
                 <p class="btn"><a href="">フォロワーリスト</a></p>
             </div>

@@ -31,7 +31,10 @@ class User extends Authenticatable
 
     protected $rememberTokenName = false;
 
-    public function follows(){
-        return $this->belongsToMany('App\Follow', 'follows', ['follow_id', 'follower_id'], 'id');
+    public function followUsers(){
+        return $this->belongsToMany('App\User', 'follows', 'follow_id', 'follower_id');
+    }
+    public function followerUsers(){
+        return $this->belongsToMany('App\User', 'follows', 'follower_id', 'follow_id');
     }
 }

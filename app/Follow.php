@@ -8,7 +8,7 @@ class Follow extends Model
 {
     //
     public function users(){
-        return $this->belongsTo('App\User', 'users', 'id', 'follow_id');
+        return $this->belongsTo('App\User', 'users', 'id', ['follow_id', 'follower_id']);
     }
 
 }
