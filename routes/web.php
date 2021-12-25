@@ -38,10 +38,10 @@ Route::group(['middleware'=>['auth']], function(){
     
     Route::get('/profile','UsersController@profile')->name('users.profile');
     
-    Route::get('/search','UsersController@index')->name('users.search');
+    Route::get('/search','UsersController@search')->name('users.search');
     
-    Route::get('/follow-list','PostsController@index')->name('posts.follow-list');
-    Route::get('/follower-list','PostsController@index')->name('posts.follower-list');
+    Route::get('/follow-list','FollowsController@followList')->name('follows.followList');
+    Route::get('/follower-list','FollowsController@followerList')->name('follows.followerList');
 });
 
 Auth::routes();
