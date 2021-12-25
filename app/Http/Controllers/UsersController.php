@@ -15,6 +15,12 @@ class UsersController extends Controller
     }
     public function search(){
         $user = Auth::user();
-        return view('users.search',['user'=>$user]);
+        //ログインユーザのフォローしている人数
+        $follow = $user->followUsers;
+        $followCount = $follow->count();
+        //ログインユーザのフォローされている人数
+        $follower = $user->followerUsers;
+        $followerCount = $follower->count();
+        return view('users.search', compact('user', 'followCount', 'followerCount'));
     }
 }
