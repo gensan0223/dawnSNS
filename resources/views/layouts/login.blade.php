@@ -26,7 +26,7 @@
             <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
             <div id="menu">
                 <div id="menu_bar">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $user->username }}さん</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $loginUser->username }}さん</a>
                     <img src="images/dawn.png">
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{{ route('posts.top') }}">ホーム</a></li>
@@ -43,7 +43,7 @@
         </div >
         <div id="side-bar">
             <div id="confirm" class="row g-3">
-                <p>{{ $user->username }}さんの</p>
+                <p>{{ $loginUser->username }}さんの</p>
                 <div class="row">
                     <div class="col">フォロー数</div>
                     <div class="col">{{ $followCount }}名</div>

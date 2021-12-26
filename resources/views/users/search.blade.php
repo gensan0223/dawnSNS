@@ -12,7 +12,19 @@
   </form>
 
   <div>
-      
+      @foreach($users as $user)
+        <div for="searchResult" class="row mt-5">
+          <div class="col">
+            <img src="" alt="">
+          </div>
+          <div for="username" class="col-6">
+            <a href="/search">{{$user->username}}</a>
+          </div>
+          <div for="followButton" class="col">
+            <a href="" class="btn btn-primary btn-sm" role="button">フォローする</a>
+          </div>
+        </div>
+      @endforeach
   </div>
 
 @endsection
