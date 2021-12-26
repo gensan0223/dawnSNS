@@ -4,23 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class UsersController extends Controller
 {
     //
 
     public function profile(){
-        $user = Auth::user();
-        return view('users.profile',['user'=>$user]);
+        $loginUser = Auth::user();
+        return view('users.profile',compact('loginUser'));
     }
     public function search(){
-        $user = Auth::user();
+        $loginUser = Auth::user();
         //ログインユーザのフォローしている人数
-        $follow = $user->followUsers;
+        $follow = $loginUser->followUsers;
         $followCount = $follow->count();
         //ログインユーザのフォローされている人数
-        $follower = $user->followerUsers;
+        $follower = $loginUser->followerUsers;
         $followerCount = $follower->count();
-        return view('users.search', compact('user', 'followCount', 'followerCount'));
+
+        //ユーザ一覧
+        $users = User::all();
+        return view('users.search', compact('loginUser', 'followCount', 'followerCount', 'users'));
     }
 }

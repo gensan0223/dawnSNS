@@ -42,6 +42,8 @@ Route::group(['middleware'=>['auth']], function(){
     
     Route::get('/follow-list','FollowsController@followList')->name('follows.followList');
     Route::get('/follower-list','FollowsController@followerList')->name('follows.followerList');
+
+    Route::post('/store', 'PostsController@store')->name('posts.store');
 });
 
 Auth::routes();

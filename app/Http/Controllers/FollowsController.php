@@ -9,23 +9,23 @@ class FollowsController extends Controller
 {
     //
     public function followList(){
-        $user = Auth::user();
+        $loginUser = Auth::user();
         //ログインユーザのフォローしている人数
-        $follow = $user->followUsers;
+        $follow = $loginUser->followUsers;
         $followCount = $follow->count();
         //ログインユーザのフォローされている人数
-        $follower = $user->followerUsers;
+        $follower = $loginUser->followerUsers;
         $followerCount = $follower->count();
-        return view('follows.followList', compact('user', 'followCount', 'followerCount'));
+        return view('follows.followList', compact('loginUser', 'followCount', 'followerCount'));
     }
     public function followerList(){
-        $user = Auth::user();
+        $loginUser = Auth::user();
         //ログインユーザのフォローしている人数
-        $follow = $user->followUsers;
+        $follow = $loginUser->followUsers;
         $followCount = $follow->count();
         //ログインユーザのフォローされている人数
-        $follower = $user->followerUsers;
+        $follower = $loginUser->followerUsers;
         $followerCount = $follower->count();
-        return view('follows.followerList', compact('user', 'followCount', 'followerCount'));
+        return view('follows.followerList', compact('loginUser', 'followCount', 'followerCount'));
     }
 }
