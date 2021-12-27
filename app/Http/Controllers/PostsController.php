@@ -21,9 +21,17 @@ class PostsController extends Controller
         $followerCount = $follower->count();
 
         // ログインユーザの投稿表示
-        $loginUserPosts=Post::where('user_id', $loginUser->id)->orderBy('created_at', 'desc')->get();
+        // $loginUserPosts = Post::where('user_id', $loginUser->id)->orderBy('created_at', 'desc')->get();
+        $loginUserId = $loginUser->id;
 
-        return view('posts.index',compact('loginUser', 'followCount', 'followerCount', 'loginUserPosts'));
+        // フォローしているユーザの投稿表示
+        $followId = $follow->pluck('id');
+
+        //自分の投稿とフォローしているユーザの投稿を両方表示
+        $follow_id[] = $loginUserId;
+        $followPosts = Post::whereIn('user_id', $follow_id)->orderBy('created_at', 'desc')->get();
+
+        return view('posts.index',compact('loginUser', 'followCount', 'followerCount', 'followPosts','loginUserId'));
     }
 
     public function store(Request $request)
