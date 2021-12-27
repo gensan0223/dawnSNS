@@ -15,7 +15,7 @@
 </form>
 
 
-@foreach($loginUserPosts as $post)
+@foreach($followPosts as $post)
 <div class="row" for="postList">
     <div class="col" for="username">
         {{ $post->user->username }}
@@ -29,6 +29,7 @@
         {{ $post->posts }}
     </div>
 </div>
+@if($post->user->id == $loginUserId)
 <div class="row">
     <div class="col" for="edit">
         <input type="image" src="images/edit.png">
@@ -37,6 +38,7 @@
         <input type="image" src="images/trash.png">
     </div>
 </div>
+@endif
 @endforeach
 
 @endsection
