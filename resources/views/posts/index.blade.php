@@ -4,7 +4,7 @@
 <form class="row border-bottom pb-3 pt-3" method="post" action="{{ route('posts.store') }}">
     {{ csrf_field() }}
     <div class="col" for="postIcon">
-        <img class="rounded-circle" src="images/dawn.png" alt="">
+        <img class="rounded-circle px-5" src="images/dawn.png" alt="">
     </div>
     <div class="col-7" for="postContent">
         <textarea class="form-control border-0" name="post" id="post" placeholder="何をつぶやこうか…？"></textarea>
@@ -16,29 +16,36 @@
 
 
 @foreach($followPosts as $post)
-<div class="row" for="postList">
-    <div class="col" for="username">
-        {{ $post->user->username }}
+<div class="container border-bottom py-2" for="postList">
+    <div class="row mx-5" for="name-date">
+        <div class="col-1" for="username">
+            {{ $post->user->username }}
+        </div>
+        <div class="col-3" for="created_at">
+            <p class="h6 text-muted">
+            {{ $post->created_at }}
+            </p>
+        </div>
     </div>
-    <div class="col" for="created_at">
-        {{ $post->created_at }}
+    <div class="row mx-5">
+        <div class="col my-4" for="post">
+            {{ $post->posts }}
+        </div>
     </div>
+    @if($post->user_id == $loginUser->id)
+    <div class="row justify-content-end">
+        <div class="col-1" for="edit">
+            <input type="image" src="images/edit.png">
+        </div>
+        <div class="col-1" for="delete">
+            <form method="post" action="{{ route('posts.destroy') }}" >
+            {{ csrf_field() }}
+            <input type="image" src="images/trash.png" name="id">
+            </form>
+        </div>
+    </div>
+    @endif
 </div>
-<div class="row">
-    <div class="col" for="post">
-        {{ $post->posts }}
-    </div>
-</div>
-@if($post->user->id == $loginUserId)
-<div class="row">
-    <div class="col" for="edit">
-        <input type="image" src="images/edit.png">
-    </div>
-    <div class="col" for="delete">
-        <input type="image" src="images/trash.png">
-    </div>
-</div>
-@endif
 @endforeach
 
 @endsection

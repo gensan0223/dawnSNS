@@ -14,7 +14,7 @@ class UsersController extends Controller
         $loginUser = Auth::user();
         return view('users.profile',compact('loginUser'));
     }
-    public function search(){
+    public function search(Request $request){
         $loginUser = Auth::user();
         //ログインユーザのフォローしている人数
         $follow = $loginUser->followUsers;
@@ -25,6 +25,13 @@ class UsersController extends Controller
 
         //ユーザ一覧
         $users = User::all();
+
+        //検索
+        $keyword = $request->input('search');
+        if(!empty($keyword)){
+            $users = User::where('username', $request->input)->first();
+        }
+
         return view('users.search', compact('loginUser', 'followCount', 'followerCount', 'users'));
     }
 }

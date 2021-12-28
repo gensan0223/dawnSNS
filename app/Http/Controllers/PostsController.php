@@ -22,16 +22,14 @@ class PostsController extends Controller
 
         // ログインユーザの投稿表示
         // $loginUserPosts = Post::where('user_id', $loginUser->id)->orderBy('created_at', 'desc')->get();
-        $loginUserId = $loginUser->id;
-
         // フォローしているユーザの投稿表示
         $followId = $follow->pluck('id');
 
         //自分の投稿とフォローしているユーザの投稿を両方表示
-        $follow_id[] = $loginUserId;
-        $followPosts = Post::whereIn('user_id', $follow_id)->orderBy('created_at', 'desc')->get();
+        $followId[] = $loginUser->id;
+        $followPosts = Post::whereIn('user_id', $followId)->orderBy('created_at', 'desc')->get();
 
-        return view('posts.index',compact('loginUser', 'followCount', 'followerCount', 'followPosts','loginUserId'));
+        return view('posts.index',compact('loginUser', 'followCount', 'followerCount', 'followPosts','loginUser'));
     }
 
     public function store(Request $request)
@@ -40,6 +38,13 @@ class PostsController extends Controller
         $post->posts = $request->post;
         $post->user_id = Auth::user()->id;
         $post->save();
+        return redirect()->route('posts.top');
+    }
+
+    public function destroy(Request $request)
+    {
+        Post::find($request->id)->delete();
+        dd($request->id);
         return redirect()->route('posts.top');
     }
 }

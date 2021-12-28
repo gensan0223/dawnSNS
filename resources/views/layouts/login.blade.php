@@ -22,12 +22,13 @@
 </head>
 <body>
     <header>
-        <div id = "head">
-            <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
-            <div id="menu">
-                <div id="menu_bar">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $loginUser->username }}さん</a>
-                    <img src="images/dawn.png">
+        <div id = "head" class="clearfix">
+            <div class="float-start">
+                <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
+            </div>
+            <div id="menu" class="float-end">
+                <div id="menu_bar" class="my-3 mx-3">
+                    <a class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $loginUser->username }}さん<img class="rounded-circle px-5" src="images/dawn.png"></a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{{ route('posts.top') }}">ホーム</a></li>
                         <li><a class="dropdown-item" href="{{ route('users.profile') }}">プロフィール</a></li>
@@ -48,14 +49,18 @@
                     <div class="col">フォロー数</div>
                     <div class="col">{{ $followCount }}名</div>
                 </div>
-                <p class="btn"><a class="btn btn-primary" href="{{ route('follows.followList') }}">フォローリスト</a></p>
+                <div class="row">
+                    <p class="btn"><a class="btn btn-sm btn-primary col" href="{{ route('follows.followList') }}">フォローリスト</a></p>
+                </div>
                 <div class="row">
                     <div class="col">フォロワー数</div>
                     <div class="col">{{ $followerCount }}名</div>
                 </div>
-                <p class="btn"><a class="btn btn-primary" href="{{ route('follows.followerList') }}">フォロワーリスト</a></p>
+                <div class="row">
+                    <p class="btn"><a class="btn btn-sm btn-primary col" href="{{ route('follows.followerList') }}">フォロワーリスト</a></p>
+                </div>
             </div>
-            <div class="align-self-center">
+            <div class="row">
             <p class="btn"><a class="btn btn-primary" href="{{ route('users.search') }}">ユーザー検索</a></p>
             </div>
         </div>

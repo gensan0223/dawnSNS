@@ -1,7 +1,8 @@
 @extends('layouts.login')
 
 @section('content')
-<form class="row g-3">
+<div class="container py-3">
+  <form class="row g-3 align-items-center" action="{{ route('users.search') }}" name="search">
     <div class="col-auto">
       <label for="searchUsername" class="visually-hidden">ユーザ名</label>
       <input class="form-control" id="searchUsername" placeholder="ユーザ名">
@@ -10,7 +11,7 @@
       <input type="image" src="images/search.png" alt="検索" class="">
     </div>
   </form>
-
+</div>
   <div>
       @foreach($users as $user)
         <div for="searchResult" class="row mt-5">
