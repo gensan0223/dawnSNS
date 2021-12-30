@@ -22,7 +22,7 @@
       @foreach($users as $user)
         <div for="searchResult" class="row mt-5">
           <div class="col">
-            <img src="" alt="">
+            <img src="images/icons/{{$user->images}}" alt="">
           </div>
           <div for="username" class="col-6">
             <a href="/search">{{$user->username}}</a>

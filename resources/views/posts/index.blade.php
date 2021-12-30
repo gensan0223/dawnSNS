@@ -18,6 +18,9 @@
 @foreach($followPosts as $post)
 <div class="container border-bottom py-2" for="postList">
     <div class="row mx-5" for="name-date">
+        <div class="col-1" for="icon">
+            <img class="rounded-circle" src="images/icons/{{ $post->user->images }}" alt="">
+        </div>
         <div class="col-1" for="username">
             {{ $post->user->username }}
         </div>
