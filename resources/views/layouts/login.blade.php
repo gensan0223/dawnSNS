@@ -28,10 +28,10 @@
             </div>
             <div id="menu" class="float-end">
                 <div id="menu_bar" class="my-3 mx-3">
-                    <a class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $loginUser->username }}さん<img class="rounded-circle px-5" src="images/ions/{{$loginUser->}}"></a>
+                    <a class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $loginUser->username }}さん<img class="rounded-circle px-5" src="images/icons/{{$loginUser->images}}"></a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{{ route('posts.top') }}">ホーム</a></li>
-                        <li><a class="dropdown-item" href="{{ route('users.profile') }}">プロフィール</a></li>
+                        <li><a class="dropdown-item" href="{{ route('users.profile', auth::id()) }}">プロフィール</a></li>
                         <li><a class="dropdown-item" href="{{ route('auth.logout') }}">ログアウト</a></li>
                     </ul>
                 </div>

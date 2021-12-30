@@ -36,7 +36,7 @@ Route::group(['middleware'=>['auth']], function(){
     
     Route::get('/top','PostsController@index')->name('posts.top');
     
-    Route::get('/profile','UsersController@profile')->name('users.profile');
+    Route::get('/profile/{id}','UsersController@profile')->name('users.profile');
     
     Route::get('/search','UsersController@search')->name('users.search');
     
