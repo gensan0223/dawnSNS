@@ -38,9 +38,9 @@
             <input type="image" src="images/edit.png">
         </div>
         <div class="col-1" for="delete">
-            <form method="post" action="{{ route('posts.destroy') }}" >
+            <form method="post" action="{{ route('posts.destroy', $post->id) }}" >
             {{ csrf_field() }}
-            <input type="image" src="images/trash.png" name="id">
+            <input type="image" src="images/trash.png" name="id" onclick='return confirm("削除しますか？");'>
             </form>
         </div>
     </div>

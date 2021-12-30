@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
@@ -40,5 +41,12 @@ class User extends Authenticatable
 
     public function posts(){
         return $this->hasMany('App\Post');
+    }
+
+    public function isFollowing($userId)
+    {
+        $isFollowing = Follow::where('follower_id', $userId)->where('follow_id', auth::id())->get();
+        // dd($isFollowing);
+        return $isFollowing;
     }
 }

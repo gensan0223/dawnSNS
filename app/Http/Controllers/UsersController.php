@@ -23,15 +23,21 @@ class UsersController extends Controller
         $follower = $loginUser->followerUsers;
         $followerCount = $follower->count();
 
-        //ユーザ一覧
-        $users = User::all();
 
         //検索
         $keyword = $request->input('search');
+        $query = User::query();
         if(!empty($keyword)){
-            $users = User::where('username', $request->input)->first();
+            $query->where('username', 'like', '%'.$keyword.'%');
+        }
+        $users = $query->get();
+        $users = $users->reject(function($values, $key){
+            return $values['id'] == auth::id();
+        });
+        if(empty($users)){
+            return "なし";
         }
 
-        return view('users.search', compact('loginUser', 'followCount', 'followerCount', 'users'));
+        return view('users.search', compact('loginUser', 'followCount', 'followerCount', 'users', 'keyword'));
     }
 }

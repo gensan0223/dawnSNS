@@ -41,10 +41,9 @@ class PostsController extends Controller
         return redirect()->route('posts.top');
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        Post::find($request->id)->delete();
-        dd($request->id);
+        Post::find($id)->delete();
         return redirect()->route('posts.top');
     }
 }
