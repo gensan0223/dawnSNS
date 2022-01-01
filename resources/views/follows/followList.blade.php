@@ -7,7 +7,7 @@
 @foreach($follow as $follow)
         <div class="col-1" for="icon">
             {{-- <a href="{{route('users.profile', $follow->follower_id)}}"> --}}
-            <a href="route('users.profile')">
+            <a href="{{route('users.profile', $follow->id)}}">
                 <img class="rounded-circle" src="images/icons/{{ $follow->images }}" alt="">
             </a>
         </div>
