@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container py-3">
-  <form class="row g-3 align-items-center" action="{{ route('users.search') }}">
+  <form class="row g-3 align-items-center" action="{{ route('users.search') }}" method="get">
     {{ csrf_field() }}
     <div class="col-auto">
       <label for="searchUsername" class="visually-hidden">ユーザ名</label>
@@ -22,10 +22,12 @@
       @foreach($users as $user)
         <div for="searchResult" class="row mt-5">
           <div class="col">
-            <img src="images/icons/{{$user->images}}" alt="">
+            <a href="{{route('users.profile', $user->id)}}">
+                <img class="rounded-circle" src="/images/icons/{{ $user->images }}" alt="">
+            </a>
           </div>
           <div for="username" class="col-6">
-            <a href="/search">{{$user->username}}</a>
+            <a href="{{route('users.search')}}">{{$user->username}}</a>
           </div>
           <div for="followButton" class="col">
             <form action="{{route('follows.follow')}}" method="post" >

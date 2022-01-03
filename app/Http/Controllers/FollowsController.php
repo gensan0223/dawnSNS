@@ -68,6 +68,7 @@ class FollowsController extends Controller
 
         //検索結果表示のため
         $users = User::all();
-        return view('users.search', compact('loginUser', 'followCount', 'followerCount', 'users'));
+        // return view('users.search', compact('loginUser', 'followCount', 'followerCount', 'users'));
+        return redirect()->route('users.search');
     }
 }
