@@ -46,4 +46,17 @@ class PostsController extends Controller
         Post::find($id)->delete();
         return redirect()->route('posts.top');
     }
+
+    public function selfProfile()
+    {
+        $loginUser = Auth::user();
+        //ログインユーザのフォローしている人数
+        $follow = $loginUser->followUsers;
+        $followCount = $follow->count();
+        //ログインユーザのフォローされている人数
+        $follower = $loginUser->followerUsers;
+        $followerCount = $follower->count();
+
+        return view('posts.selfProfile',compact('loginUser', 'followCount', 'followerCount'));
+    }
 }
