@@ -47,7 +47,8 @@ Route::group(['middleware'=>['auth']], function(){
     Route::post('/store', 'PostsController@store')->name('posts.store');
     Route::post('/delete/{id}', 'PostsController@destroy')->name('posts.destroy');
 
-    Route::get('/selfprofile', 'PostsController@selfProfile')->name('posts.selfProfile');
+    Route::get('/selfProfile', 'PostsController@showSelfProfile')->name('posts.selfProfile');
+    Route::post('/getSelfProfile', 'PostsController@getSelfProfile')->name('posts.getSelfProfile');
 });
 
 Auth::routes();

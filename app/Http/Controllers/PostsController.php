@@ -47,7 +47,7 @@ class PostsController extends Controller
         return redirect()->route('posts.top');
     }
 
-    public function selfProfile()
+    public function showSelfProfile()
     {
         $loginUser = Auth::user();
         //ログインユーザのフォローしている人数
@@ -57,6 +57,21 @@ class PostsController extends Controller
         $follower = $loginUser->followerUsers;
         $followerCount = $follower->count();
 
-        return view('posts.selfProfile',compact('loginUser', 'followCount', 'followerCount'));
+        return view('posts.showSelfProfile',compact('loginUser', 'followCount', 'followerCount'));
+    }
+
+    public function getSelfProfile(Request $request)
+    {
+        $loginUser = Auth::user();
+        //ログインユーザのフォローしている人数
+        $follow = $loginUser->followUsers;
+        $followCount = $follow->count();
+        //ログインユーザのフォローされている人数
+        $follower = $loginUser->followerUsers;
+        $followerCount = $follower->count();
+
+        $request->file('icon')->store('/public/images/icons');
+
+        return view('posts.showSelfProfile',compact('loginUser', 'followCount', 'followerCount'));
     }
 }
