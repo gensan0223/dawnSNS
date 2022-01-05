@@ -43,7 +43,6 @@ class FollowsController extends Controller
 
     public function follow(Request $request)
     {
-        // dd($request->input('is-follow'));
         $loginUser = Auth::user();
         //ログインユーザのフォローしている人数
         $follow = $loginUser->followUsers;
@@ -63,12 +62,15 @@ class FollowsController extends Controller
             $deleteFollow=Follow::where('follow_id', auth::id())->where('follower_id', $request->input('userId'))->first();
             $deleteFollow->delete();
         }
+        
+        //実行先に応じてredirect先を変更
+        $referer = $request->headers->get('referer');
 
-        // dd($isFollow);
-
-        //検索結果表示のため
-        $users = User::all();
-        // return view('users.search', compact('loginUser', 'followCount', 'followerCount', 'users'));
-        return redirect()->route('users.search');
+        if(strpos($referer, 'search')){
+            return redirect()->route('users.search');
+        }
+        if(strpos($referer, 'profile')){
+            return redirect()->route('follows.followList');
+        }
     }
 }

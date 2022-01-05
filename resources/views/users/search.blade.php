@@ -23,7 +23,7 @@
         <div for="searchResult" class="row mt-5">
           <div class="col">
             <a href="{{route('users.profile', $user->id)}}">
-                <img class="rounded-circle" src="/images/icons/{{ $user->images }}" alt="">
+                <img class="rounded-circle" src="/storage/images/icons/{{ $user->images }}" alt="">
             </a>
           </div>
           <div for="username" class="col-6">

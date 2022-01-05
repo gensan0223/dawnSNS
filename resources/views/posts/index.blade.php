@@ -4,7 +4,7 @@
 <form class="row border-bottom pb-3 pt-3" method="post" action="{{ route('posts.store') }}">
     {{ csrf_field() }}
     <div class="col" for="postIcon">
-        <img class="rounded-circle px-5" src="/images/dawn.png" alt="">
+        <img class="rounded-circle px-5" src="/storage/images/icons/{{$loginUser->images}}" alt="">
     </div>
     <div class="col-7" for="postContent">
         <textarea class="form-control border-0" name="post" id="post" placeholder="何をつぶやこうか…？"></textarea>
@@ -19,7 +19,7 @@
 <div class="container border-bottom py-2" for="postList">
     <div class="row mx-5" for="name-date">
         <div class="col-1" for="icon">
-            <img class="rounded-circle" src="/images/icons/{{ $post->user->images }}" alt="">
+            <img class="rounded-circle" src="/storage/images/icons/{{ $post->user->images }}" alt="">
         </div>
         <div class="col-1" for="username">
             {{ $post->user->username }}

@@ -70,8 +70,30 @@ class PostsController extends Controller
         $follower = $loginUser->followerUsers;
         $followerCount = $follower->count();
 
-        $request->file('icon')->store('/public/images/icons');
+        //プロフィール更新
+        if($request->has('username')){
+            $loginUser->username = $request->username;
+            $loginUser->save();
+        }
+        if($request->has('mail')){
+            $loginUser->mail = $request->mail;
+            $loginUser->save();
+        }
+        if($request->has('newPassword')){
+            $loginUser->password = bcrypt($request->newPassword);
+            $loginUser->save();
+        }
+        if($request->has('bio')){
+            $loginUser->bio = $request->bio;
+            $loginUser->save();
+        }
+        if($request->has('icon')){
+            $fileName = $request->file('icon')->getClientOriginalName();
+            $request->file('icon')->storeAs('public/images/icons', $fileName);
+            $loginUser->images = $fileName;
+            $loginUser->save();
+        }
 
-        return view('posts.showSelfProfile',compact('loginUser', 'followCount', 'followerCount'));
+        return redirect()->route('posts.top');
     }
 }

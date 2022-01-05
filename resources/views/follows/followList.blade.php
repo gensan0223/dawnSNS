@@ -8,7 +8,7 @@
         <div class="col-1" for="icon">
             {{-- <a href="{{route('users.profile', $follow->follower_id)}}"> --}}
             <a href="{{route('users.profile', $follow->id)}}">
-                <img class="rounded-circle" src="images/icons/{{ $follow->images }}" alt="">
+                <img class="rounded-circle" src="/storage/images/icons/{{ $follow->images }}" alt="">
             </a>
         </div>
 @endforeach
@@ -19,7 +19,7 @@
 <div class="container border-bottom py-2" for="postList">
     <div class="row mx-5" for="name-date">
         <a href="{{route('users.profile', $post->user_id)}}">
-            <img class="rounded-circle" src="images/icons/{{ $post->user->images }}" alt="">
+            <img class="rounded-circle" src="/storage/images/icons/{{ $post->user->images }}" alt="">
         </a>
         <div class="col-1" for="username">
             {{ $post->user->username }}
