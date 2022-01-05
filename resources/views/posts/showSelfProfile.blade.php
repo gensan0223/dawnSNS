@@ -37,7 +37,7 @@
             </div>
     </div>
     <div class="row mb-3">
-            {{ Form::label('password-confirm','Bio',['class'=>'col-sm-2 col-form-label label']) }}
+            {{ Form::label('bio','Bio',['class'=>'col-sm-2 col-form-label label']) }}
             <div class="col-sm-10">
                 {{ Form::textarea('bio',$loginUser->bio,['class' => 'form-control input', 'rows'=>3]) }}
             </div>
