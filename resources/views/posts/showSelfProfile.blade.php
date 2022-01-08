@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="container border-bottom py-4">
+    @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+    @endforeach
 {!! Form::open(['route'=>'posts.getSelfProfile', 'files'=>true]) !!}
 {{csrf_field()}}
     <div class="row px-5 ">
