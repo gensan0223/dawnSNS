@@ -5,5 +5,6 @@ html{
 }
 body{
     height: 100%;
-    background: #3C4767;
+    background: linear-gradient(#1d3333, 70%, #fa8072);
+    color: white;
 }

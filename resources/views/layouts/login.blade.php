@@ -23,8 +23,8 @@
 <body>
     <header>
         <div id = "head" class="clearfix">
-            <div class="float-start">
-                <h1><a href="/top"><img src="/images/main_logo.png"></a></h1>
+            <div class="float-start px-5">
+                <a href="/top"><img src="/images/main_logo.png"></a>
             </div>
             <div id="menu" class="float-end">
                 <div id="menu_bar" class="my-3 mx-3">

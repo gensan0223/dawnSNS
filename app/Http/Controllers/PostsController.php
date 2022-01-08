@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
 use App\User;
 use App\Follow;
 use App\Post;
@@ -60,7 +61,7 @@ class PostsController extends Controller
         return view('posts.showSelfProfile',compact('loginUser', 'followCount', 'followerCount'));
     }
 
-    public function getSelfProfile(Request $request)
+    public function getSelfProfile(ProfileRequest $request)
     {
         $loginUser = Auth::user();
         //ログインユーザのフォローしている人数

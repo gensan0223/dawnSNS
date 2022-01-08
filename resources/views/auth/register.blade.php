@@ -1,37 +1,49 @@
 @extends('layouts.logout')
 
 @section('content')
-
-{!! Form::open() !!}
-
-<h2>新規ユーザー登録</h2>
-
 @if($errors->any())
-    <div class="alert alert-danger">
+    <div class="alert alert-warning alert-dismissable fade show" role="alert">
         <ul>
             @foreach($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
-{{ Form::label('username','ユーザー名',['class'=>'label']) }}
-{{ Form::text('username',null,['class' => 'input']) }}
+<div class="card bg-dark mx-auto bg-opacity-50 mt-5" style="width:18rem;">
 
-{{ Form::label('mail','メールアドレス',['class'=>'label']) }}
-{{ Form::text('mail',null,['class' => 'input']) }}
+    {!! Form::open() !!}
+    <div class="card-body">
+        <div class="text-center card-title py-3 fw-normal">
+            新規ユーザー登録
+        </div>
 
-{{ Form::label('password', 'パスワード',['class'=>'label']) }}
-{{ Form::text('password',null,['class' => 'input']) }}
+        <div class="mb-3">
+            {{ Form::label('username','UserName',['class'=>'label form-label']) }}
+            {{ Form::text('username',null,['class' => 'input form-control']) }}
+        </div>
+        <div class="mb-3">
+            {{ Form::label('mail','MailAddress',['class'=>'label form-label']) }}
+            {{ Form::text('mail',null,['class' => 'input form-control']) }}
+        </div>
+        <div class="mb-3">
+            {{ Form::label('password', 'Password',['class'=>'label form-label']) }}
+            {{ Form::text('password',null,['class' => 'input form-control']) }}
+        </div>
+        <div class="mb-3">
+            {{ Form::label('password-confirm','Password Confirm',['class'=>'label form-label']) }}
+            {{ Form::text('password_confirmation',null,['class' => 'input form-control']) }}
+        </div>
+        <div class="text-right">
+            {{ Form::submit('REGISTER', ['class'=>'btn btn-primary']) }}
+        </div>
 
-{{ Form::label('password-confirm','パスワード確認',['class'=>'label']) }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
+            <p class="pt-5 text-center"><a href="/login" class="text-white text-decolation-none">ログイン画面へ戻る</a></p>
 
-{{ Form::submit('登録') }}
-
-<p><a href="/login">ログイン画面へ戻る</a></p>
-
-{!! Form::close() !!}
+            {!! Form::close() !!}
+    </div>
+</div>
 
 
 @endsection
