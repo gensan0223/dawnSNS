@@ -46,7 +46,7 @@
                         {!! Form::open(['route'=>['posts.edit', $post->id]]) !!}
                         <div class="modal-body">
                             <div>
-                                {{ Form::text('post',$post->posts,['class' => 'form-control input']) }}
+                                {{ Form::textarea('post',$post->posts,['class' => 'form-control input', 'rows'=>3]) }}
                             </div>
                         </div>
                         <div class="modal-footer">
