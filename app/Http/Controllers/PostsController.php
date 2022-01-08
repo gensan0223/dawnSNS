@@ -42,6 +42,14 @@ class PostsController extends Controller
         return redirect()->route('posts.top');
     }
 
+    public function edit(Request $request, $id)
+    {
+        $post = Post::find($id);
+        $post->posts = $request->post;
+        $post->save();
+        return redirect()->route('posts.top');
+    }
+
     public function destroy($id)
     {
         Post::find($id)->delete();

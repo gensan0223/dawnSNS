@@ -1,6 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
+
 <form class="row border-bottom pb-3 pt-3" method="post" action="{{ route('posts.store') }}">
     {{ csrf_field() }}
     <div class="col" for="postIcon">
@@ -13,7 +14,6 @@
         <input type="image" alt="送信" src="/images/post.png">
     </div>
 </form>
-
 
 @foreach($followPosts as $post)
 <div class="container border-bottom py-2" for="postList">
@@ -38,7 +38,24 @@
     @if($post->user_id == $loginUser->id)
     <div class="row justify-content-end">
         <div class="col-1" for="edit">
-            <input type="image" src="/images/edit.png">
+            <input type="image" src="/images/edit.png" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            {{-- modal --}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                        {!! Form::open(['route'=>['posts.edit', $post->id]]) !!}
+                        <div class="modal-body">
+                            <div>
+                                {{ Form::textarea('post',$post->posts,['class' => 'form-control input', 'rows'=>3]) }}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        <input type="image" src="/images/edit.png">
+                        {!! Form::close() !!}
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
         <div class="col-1" for="delete">
             <form method="post" action="{{ route('posts.destroy', $post->id) }}" >
