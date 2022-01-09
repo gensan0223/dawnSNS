@@ -32,6 +32,7 @@ class UsersTableSeeder extends Seeder
                 'images'=>'tori1.png'
             ],
         ],
-    );
+        );
+        factory(App\User::class, 20)->create();
     }
 }
