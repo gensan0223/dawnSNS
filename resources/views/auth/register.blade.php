@@ -29,11 +29,11 @@
         </div>
         <div class="mb-3">
             {{ Form::label('password', 'Password',['class'=>'label form-label']) }}
-            {{ Form::text('password',null,['class' => 'input form-control']) }}
+            {{ Form::password('password',['class' => 'input form-control']) }}
         </div>
         <div class="mb-3">
             {{ Form::label('password-confirm','Password Confirm',['class'=>'label form-label']) }}
-            {{ Form::text('password_confirmation',null,['class' => 'input form-control']) }}
+            {{ Form::password('password_confirmation',['class' => 'input form-control']) }}
         </div>
         <div class="text-right">
             {{ Form::submit('REGISTER', ['class'=>'btn btn-primary']) }}
