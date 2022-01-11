@@ -17,19 +17,25 @@ class UsersTableSeeder extends Seeder
                 'username'=>'Seeder1',
                 'mail'=>'seeder1@mail.com',
                 'password'=>bcrypt('password'),
-                'images'=>'neko1.png'
+                'images'=>'neko1.png',
+                'created_at'=>now(),
+                'updated_at'=>now()
             ],
             [
                 'username'=>'Seeder2',
                 'mail'=>'seeder2@mail.com',
                 'password'=>bcrypt('password'),
-                'images'=>'neko2.png'
+                'images'=>'neko2.png',
+                'created_at'=>now(),
+                'updated_at'=>now()
             ],
             [
                 'username'=>'Seeder3',
                 'mail'=>'seeder3@mail.com',
                 'password'=>bcrypt('password'),
-                'images'=>'tori1.png'
+                'images'=>'tori1.png',
+                'created_at'=>now(),
+                'updated_at'=>now()
             ],
         ],
         );

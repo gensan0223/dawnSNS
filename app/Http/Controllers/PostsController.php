@@ -42,9 +42,9 @@ class PostsController extends Controller
         return redirect()->route('posts.top');
     }
 
-    public function edit(Request $request, $id)
+    public function edit(Request $request)
     {
-        $post = Post::find($id);
+        $post = Post::find($request->id);
         $post->posts = $request->post;
         $post->save();
         return redirect()->route('posts.top');
