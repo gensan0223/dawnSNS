@@ -93,7 +93,7 @@ class RegisterController extends Controller
     }
 
     public function added(){
-        $user = DB::table('users')->OrderBy('id')->first();
+        $user = DB::table('users')->OrderBy('created_at','desc')->first();
         return view('auth.added', ['user'=>$user]);
     }
 }
