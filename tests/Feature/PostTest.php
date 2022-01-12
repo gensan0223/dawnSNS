@@ -53,30 +53,26 @@ class PostTest extends TestCase
         $this->assertDatabaseHas('posts',['posts'=>'testです', 'user_id'=>$user->id]);
     }
 
-    // public function testEditPost()
-    // {
-    //     $user = factory(User::class)->create();
-    //     $post = factory(Post::class)->create([
-    //         'user_id'=>$user->id,
-    //         'posts'=>'testです'
-    //     ]);
-    //     $response = $this->actingAs($user)
-    //         ->get('/top');
-    //     $response->assertStatus(200);
-    //     $response->assertViewIs('posts.index');
-    //     $response->assertSeeText('testです');
+    public function testEditPost()
+    {
+        $user = factory(User::class)->create();
+        $post = factory(Post::class)->create([
+            'user_id'=>$user->id,
+            'posts'=>'testです'
+        ]);
+        $response = $this->actingAs($user)
+            ->get('/top');
+        $response->assertStatus(200);
+        $response->assertViewIs('posts.index');
+        $this->assertDatabaseHas('posts', ['posts'=>'testです']);
 
-    //     $url = '/edit';
-    //     $response = $this->post($url, [
-    //         'id'=>$post->id,
-    //         'posts'=>'更新'
-    //     ]);
-    //     // $response->assertRedirect('/top');
-    //     $this->assertDatabaseHas('posts', ['posts'=>'更新']);
+        $url = '/edit/'.$post->id;
+        $response = $this->post($url, [
+            'post'=>'更新'
+        ]);
+        $this->assertDatabaseHas('posts', ['posts'=>'更新']);
+    }
 
-
-
-    // }
     public function testPostDelete()
     {
         $user = factory(User::class)->create();
@@ -88,9 +84,8 @@ class PostTest extends TestCase
             ->get('/top');
 
         $this->assertDatabaseHas('posts', ['posts'=>'testです']);
-        $deleteUrl = route('posts.destroy', $post->id);
-        $response = $this->get($deleteUrl);
-        $response = $this->get('/top');
+        $deleteUrl = '/delete/'. $post->id;
+        $response = $this->post($deleteUrl);
         $this->assertDatabaseMissing('posts', ['posts'=>'testです']);
     }
 }
