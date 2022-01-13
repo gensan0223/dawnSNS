@@ -27,7 +27,6 @@ class ProfilePasswordRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
         $currentPassword = Auth::user()->password;
         if(Hash::check($value, $currentPassword)){
             return false;

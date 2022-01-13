@@ -19,13 +19,8 @@ class CreateFollowsTable extends Migration
             $table->unsignedBigInteger('follower_id');
             $table->timestamp('created_at')->useCurrent();
 
-            $table->foreign('follow_id')
-            ->references('id')
-            ->on('users');
-
-            $table->foreign('follower_id')
-            ->references('id')
-            ->on('users');
+            $table->foreign('follow_id')->references('id')->on('users');
+            $table->foreign('follower_id')->references('id')->on('users');
 
             $table->unique(['follow_id', 'follower_id']);
         });

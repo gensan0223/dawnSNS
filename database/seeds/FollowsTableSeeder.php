@@ -11,8 +11,6 @@ class FollowsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        // factory(App\Post::class, 20)->create();
         DB::table('follows')->insert([
             [
                 'follow_id'=>1,

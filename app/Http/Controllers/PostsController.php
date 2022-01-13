@@ -14,23 +14,12 @@ class PostsController extends Controller
     //
     public function index(){
         $loginUser = Auth::user();
-        //ログインユーザのフォローしている人数
         $follow = $loginUser->followUsers;
-        $followCount = $follow->count();
-        //ログインユーザのフォローされている人数
-        $follower = $loginUser->followerUsers;
-        $followerCount = $follower->count();
-
-        // ログインユーザの投稿表示
-        // $loginUserPosts = Post::where('user_id', $loginUser->id)->orderBy('created_at', 'desc')->get();
-        // フォローしているユーザの投稿表示
         $followId = $follow->pluck('id');
-
-        //自分の投稿とフォローしているユーザの投稿を両方表示
         $followId[] = $loginUser->id;
         $followPosts = Post::whereIn('user_id', $followId)->orderBy('created_at', 'desc')->get();
 
-        return view('posts.index',compact('loginUser', 'followCount', 'followerCount', 'followPosts','loginUser'));
+        return view('posts.index',compact('followPosts'));
     }
 
     public function store(Request $request)
@@ -58,28 +47,12 @@ class PostsController extends Controller
 
     public function showSelfProfile()
     {
-        $loginUser = Auth::user();
-        //ログインユーザのフォローしている人数
-        $follow = $loginUser->followUsers;
-        $followCount = $follow->count();
-        //ログインユーザのフォローされている人数
-        $follower = $loginUser->followerUsers;
-        $followerCount = $follower->count();
-
-        return view('posts.showSelfProfile',compact('loginUser', 'followCount', 'followerCount'));
+        return view('posts.showSelfProfile');
     }
 
     public function getSelfProfile(ProfileRequest $request)
     {
         $loginUser = Auth::user();
-        //ログインユーザのフォローしている人数
-        $follow = $loginUser->followUsers;
-        $followCount = $follow->count();
-        //ログインユーザのフォローされている人数
-        $follower = $loginUser->followerUsers;
-        $followerCount = $follower->count();
-
-        //プロフィール更新
         if($request->has('username')){
             $loginUser->username = $request->username;
             $loginUser->save();

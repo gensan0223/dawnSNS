@@ -13,45 +13,25 @@ class FollowsController extends Controller
     //
     public function followList(){
         $loginUser = Auth::user();
-        //ログインユーザのフォローしている人数
         $follow = $loginUser->followUsers;
-        $followCount = $follow->count();
-        //ログインユーザのフォローされている人数
         $follower = $loginUser->followerUsers;
-        $followerCount = $follower->count();
-
         $followId = $follow->pluck('id');
         $followPosts = Post::whereIn('user_id', $followId)->orderBy('created_at', 'desc')->get();
 
-        return view('follows.followList', compact('loginUser', 'followCount', 'followerCount', 'follow', 'followPosts'));
+        return view('follows.followList', compact('follow', 'followPosts'));
     }
 
     public function followerList(){
         $loginUser = Auth::user();
-        //ログインユーザのフォローしている人数
-        $follow = $loginUser->followUsers;
-        $followCount = $follow->count();
-        //ログインユーザのフォローされている人数
         $follower = $loginUser->followerUsers;
-        $followerCount = $follower->count();
-
         $followerId = $follower->pluck('id');
         $followerPosts = Post::whereIn('user_id', $followerId)->orderBy('created_at', 'desc')->get();
 
-        return view('follows.followerList', compact('loginUser', 'followCount', 'followerCount', 'follower', 'followerPosts'));
+        return view('follows.followerList', compact('follower', 'followerPosts'));
     }
 
     public function follow(Request $request)
     {
-        $loginUser = Auth::user();
-        //ログインユーザのフォローしている人数
-        $follow = $loginUser->followUsers;
-        $followCount = $follow->count();
-        //ログインユーザのフォローされている人数
-        $follower = $loginUser->followerUsers;
-        $followerCount = $follower->count();
-
-        //follow機能
         if($request->has('follow')){
             $newFollow = new Follow;
             $newFollow->follow_id = auth::id();

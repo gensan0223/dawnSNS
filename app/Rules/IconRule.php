@@ -15,7 +15,6 @@ class IconRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
         if (!preg_match('/^[-_a-zA-Z0-9]/', $value->getClientOriginalName())) {
             return false;
         }
