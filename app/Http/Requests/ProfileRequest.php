@@ -33,7 +33,6 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'username' => 'min:4|max:12',
             'mail'=>[
                 'required',
